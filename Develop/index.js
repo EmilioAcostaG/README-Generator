@@ -1,11 +1,11 @@
-// TODO: Include packages needed for this application
+// External packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
 
 
-// TODO: Create an array of questions for user input
-const prompt = () => {
-  return inquirer.questions([
+// An array of questions for user input to use with Inquirer
+const promptUser = () => {
+  return inquirer.prompt([
 {
   type: 'input',
   name: 'username',
@@ -25,7 +25,7 @@ const prompt = () => {
 {
   type: 'input',
   name: 'description',
-  message: 'Please wrote a description for your project.'
+  message: 'Please write a description for your project.'
 },
 {
   type: 'input',
@@ -49,12 +49,11 @@ const prompt = () => {
 },
 {
   type: 'list',
-  name: 'licence',
+  name: 'license',
   message: 'Please choose a license for your project.',
   choices: ['MIT', 'Apache 2.0', 'GPLv3', 'None']
 },
 ])};
-// TODO: Create a function to write README file
 
 const generateReadMe = ({
   username,
@@ -67,7 +66,18 @@ const generateReadMe = ({
   test,
   license
 }) =>
-  `#${title}
+  `# ${title}
+
+  * [Description](#description)
+  * [Installation](#installation)
+  * [Usage](#usage)
+  * [Contributions](#contributions)
+  * [Tests](#tests)
+  * [License](#license)
+  * [Questions](#questions)
+
+  ---
+
 
   ## Description
   ${description}
@@ -80,22 +90,26 @@ const generateReadMe = ({
   
   ## Contributions
   ${contribution}
+
+  ## Tests
+  ${test}
   
   ## License
   Ths project is licensed under the ${license} license.
   
   ### Questions
-  My GitHub username is ${username} and you can find my page [here](github.com/${username}).
-  You can also reach me via email to: ${email}.`
+  My GitHub username is ${username} and you can find my page [here](https://github.com/${username}). \n
+  You can also reach me via email to: ${email}.`;
 
+// Function to initialize app
 
+  const init = () => {
+   promptUser()
+    //.then((answers) => console.log(answers))
+    .then((answers) => fs.writeFileSync('README.md', generateReadMe(answers)))
+    .then(() => console.log("Successfully wrote to README.md"))
+    .catch((err) => console.error(err))
+ };
 
-// function writeToFile(fileName, data) {}
-// fs.writeFile('log.txt', process.argv[2], (err) =>
-//   err ? console.error(err) : console.log('Success!')
-// );
-// // TODO: Create a function to initialize app
-// function init() {}
-
-// // Function call to initialize app
-// init();
+ // Function call to initialize app
+ init();

@@ -1,4 +1,4 @@
-# README Generator!
+# README.md Generator
 
   * [Description](#description)
   * [Installation](#installation)
@@ -12,24 +12,24 @@
 
 
   ## Description
-  This is a brief description.
+  Brief description goes here.
   
   ## Installation
-  None.
+  npm install 
   
   ## Usage
-  N/A.
+  n/a
   
   ## Contributions
-  
+  none
 
   ## Tests
-  
+  none
   
   ## License
   Ths project is licensed under the MIT license.
   
   ### Questions
-  My GitHub username is emilioacostag and you can find my page [here](https://github.com/emilioacostag). 
+  My GitHub username is EmilioAcostaG and you can find my page [here](https://github.com/EmilioAcostaG). 
 
   You can also reach me via email to: acostaemilio92@gmail.com.
